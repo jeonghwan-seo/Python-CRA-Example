@@ -14,7 +14,7 @@ class Card:
             - "todo": 아직 시작되지 않은 상태
             - "in prog": 진행 중
             - "done": 완료됨 
-        id (int): 카드의 고유 식별자입니다. 객체의 동등성 비교에 이용해서는 안됩니다.
+        id (int): 카드의 고유 식별자입니다.
     """
     summary: str = None
     owner: str = None
