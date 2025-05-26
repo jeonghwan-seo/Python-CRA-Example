@@ -5,7 +5,8 @@ class xy_info:
 
 
 class xyManager:
-    _arr = []
+    def __init__(self):
+        self._arr = []
 
     def add(self, data: xy_info):
         self._arr.append(data)
