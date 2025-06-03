@@ -1,25 +1,12 @@
-from dataclasses import dataclass, field
-from dataclasses import asdict
+class Account:
+    def __init__(self, balance):
+        self.balance = balance
 
+    def transfer_to(self, target, amount):
+        if self.balance < amount:
+            raise ValueError("예금 부족")
+        self.balance -= amount
+        target.balance += amount
 
-@dataclass
-class Card:
-    """
-    할일을 관리해주는 application 에서 사용되는 기본 데이터 구조입니다. 
+# 간단한 계좌 이체 함수를 pytest와 함께 AAA 패턴으로 작성해본다
 
-    Attributes:
-        summary (str): 작업에 대한 간단한 설명입니다.
-        owner (str): 이 작업 카드를 담당하는 사람의 이름입니다.
-        state (str): 카드의 현재 상태입니다. 일반적인 값은 다음과 같습니다:
-            - "todo": 아직 시작되지 않은 상태
-            - "in prog": 진행 중
-            - "done": 완료됨 
-        id (int): 카드의 고유 식별자입니다.
-    """
-    summary: str = None
-    owner: str = None
-    state: str = "todo"
-    id: int = field(default=None, compare=False)
-
-    def to_dict(self):
-        return asdict(self)
